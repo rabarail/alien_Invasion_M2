@@ -14,6 +14,8 @@ from ship import Ship
 from arsenal import Arsenal
 from alien import Alien
 from game_stats import GameStats
+from button import Button
+
 
 
 class AlienInvasion:
@@ -50,7 +52,10 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
+
+        self.play_button = Button(self, 'Play')
         self.stats.game_active = True
+
 
     def _create_fleet(self) -> None:
         """Create a fleet of aliens on the right side of the screen."""
@@ -147,10 +152,9 @@ class AlienInvasion:
         self.ship.draw()
 
         if not self.stats.game_active:
-            font = pygame.font.SysFont(None, 72)
-            msg = font.render('GAME OVER', True, (255, 0, 0))
-            msg_rect = msg.get_rect(center=self.screen.get_rect().center)
-            self.screen.blit(msg, msg_rect)
+            self.play_button.draw()
+            pygame.mouse.set_visible(True)
+
 
         pygame.display.flip()    
 
