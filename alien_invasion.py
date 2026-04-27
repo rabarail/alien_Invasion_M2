@@ -41,7 +41,7 @@ class AlienInvasion:
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
         self.laser_sound.set_volume(0.4)
 
-        # Game stats
+        # Stats must be created before ship and fleet
         self.stats = GameStats(self)
 
         self.ship = Ship(self, Arsenal(self))
@@ -50,7 +50,6 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
-        # Start game active
         self.stats.game_active = True
 
     def _create_fleet(self) -> None:
@@ -111,14 +110,11 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(
             self.ship.arsenal.bullets, self.aliens, True, True
         )
-        # Add score for each alien hit
         if collisions:
             for aliens_hit in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens_hit)
-            # Update max score
             if self.stats.score > self.stats.max_score:
                 self.stats.max_score = self.stats.score
-            # Update high score
             if self.stats.score > self.stats.high_score:
                 self.stats.high_score = self.stats.score
 
