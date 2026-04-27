@@ -140,7 +140,7 @@ class AlienInvasion:
 
     def _update_screen(self) -> None:
         """Redraw the background, bullets, aliens, and ship each frame."""
-
+        
         self.screen.blit(self.bg, (0, 0))
         self.ship.arsenal.draw_arsenal()
         self.aliens.draw(self.screen)
@@ -152,7 +152,7 @@ class AlienInvasion:
             msg_rect = msg.get_rect(center=self.screen.get_rect().center)
             self.screen.blit(msg, msg_rect)
 
-        pygame.display.flip()  
+        pygame.display.flip()    
 
     def _check_events(self) -> None:
         """Listen for and respond to keyboard and window events."""

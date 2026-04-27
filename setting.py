@@ -35,6 +35,23 @@ class Settings:
         # Alien
         self.alien_w: int = 40
         self.alien_h: int = 40
+        self.fleet_direction = 1 
+        self.fleet_drop_speed = 40
+
+        #button
+        self.button_w: 200
+        self.button_h: 50
+        self.button_color = (171, 217, 176)
+
+        self.text_color = (255,255,255)
+        self.button_font_size = 48
+        self.HUD_font_size = 20
+
+        self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
+
+
+
+
 
         # Difficulty scaling
         self.speedup_scale: float = 1.1
