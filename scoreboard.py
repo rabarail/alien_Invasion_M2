@@ -77,5 +77,5 @@ class Scoreboard:
         for i in range(self.stats.ships_left):
             rect = ship_image.get_rect()
             rect.x = 10 + i * (self.settings.ship_w + 5)
-            rect.y = 35
+            rect.y = 60
             self.screen.blit(ship_image, rect)
