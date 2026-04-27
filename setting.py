@@ -15,11 +15,21 @@ class Settings:
         self.ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2.png'
         self.ship_w = 40
         self.ship_h = 60
+
         def initialize_dynamic_settings(self) -> None:
+            """Initialize settings that change throughout the game."""
+
             self.ship_speed = 6
             self.bullet_speed: float = 15.0
             self.alien_speed: float = 1.5
+            self.alien_points: int = 50
 
+        def increase_speed(self) -> None:
+            """Increases speed settings and alien point values."""
+            self.ship_speed *= self.speedup_scale
+            self.bullet_speed *= self.speedup_scale
+            self.alien_speed *= self.speedup_scale
+            self.alien_points = int(self.alien_points * self.score_scale)
 
         self.alien_points: int = 50 #scoring  
         self.ship_limit = 3 # number of lives
