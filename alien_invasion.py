@@ -98,7 +98,7 @@ class AlienInvasion:
             self.ship.arsenal.update_arsenal()
 
             self._update_aliens()
-            self._check_collisions()
+            self._check_collisions()  
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
