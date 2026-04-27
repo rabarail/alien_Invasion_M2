@@ -1,4 +1,4 @@
-"""Button module — represents a clickable Play button."""
+"""Button module — represents clickable buttons and labels for the game UI."""
 
 import pygame.font
 
@@ -53,3 +53,28 @@ class Button:
             True if the mouse position is within the button, False otherwise.
         """
         return self.rect.collidepoint(mouse_pos)
+
+
+class GameOverLabel:
+    """Displays a Game Over label above the play button."""
+
+    def __init__(self, game) -> None:
+        """Initialize the game over label.
+
+        Args:
+            game: The main AlienInvasion game instance.
+        """
+        self.screen = game.screen
+        self.boundaries = game.screen.get_rect()
+        self.font = pygame.font.Font(
+            game.settings.font_file,
+            game.settings.button_font_size
+        )
+        self.image = self.font.render('Game Over', True, (255, 0, 0), None)
+        self.rect = self.image.get_rect()
+        self.rect.centerx = self.boundaries.centerx
+        self.rect.centery = self.boundaries.centery - 80
+
+    def draw(self) -> None:
+        """Draw the Game Over label to the screen."""
+        self.screen.blit(self.image, self.rect)
