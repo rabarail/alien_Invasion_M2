@@ -126,7 +126,7 @@ class AlienInvasion:
 
     def _ship_hit(self) -> None:
         """Respond to ship being hit — lose a life or end game."""
-        if self.stats.ships_left > 0:
+        if self.stats.ships_left > 1:
             self.stats.ships_left -= 1
             self.aliens.empty()
             self.ship.arsenal.bullets.empty()
@@ -134,6 +134,7 @@ class AlienInvasion:
             self.ship.rect.midleft = self.screen.get_rect().midleft
             self.ship.x = float(self.ship.rect.x)
             self.ship.y = float(self.ship.rect.y)
+            pygame.time.delay(500)
         else:
             self.stats.game_active = False
 
